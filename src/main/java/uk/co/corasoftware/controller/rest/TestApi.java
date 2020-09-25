@@ -30,6 +30,9 @@ public class TestApi {
 	@Value("#{environment.BOT_DEV_PASSWORD}")
 	private String apiDevPassword;
 
+	@Value("#{environment.BOT_PROD_PASSWORD}")
+	private String apiProdPassword;
+
 	@RequestMapping(path = "/alive", method = RequestMethod.GET)
 	public ResponseEntity<String> alive() {
 		return new ResponseEntity<String>("alive", HttpStatus.OK);
@@ -54,7 +57,6 @@ public class TestApi {
 		// @formatter:off
 		ApiToken token = ApiToken.builder()
 				.name(issuedTo + "-api-token")
-				.passphrase(issuedTo)
 				.issuedBy(issuedBy)
 				.issuedTo(issuedTo)
 				.description(description)

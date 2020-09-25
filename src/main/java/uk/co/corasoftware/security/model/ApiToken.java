@@ -46,11 +46,6 @@ public class ApiToken {
 
 	@Getter
 	@Setter
-	@Column(name = "passphrase")
-	private String passphrase;
-
-	@Getter
-	@Setter
 	@Column(name = "issued_to", unique = true)
 	private String issuedTo;
 

@@ -25,24 +25,9 @@ public class SecurityTokenController implements Service<ApiToken> {
 			boolean isValidRequest = JwtTokenDecoder.isValidToken(token);
 			if (!isValidRequest) {
 				throw new InvalidSecurityTokenException("Invalid token");
-			} else {
-				return tokenMatchesPassphrase(token, user);
 			}
-		}
-	}
 
-	private boolean tokenMatchesPassphrase(String token, String passString)
-			throws InvalidSecurityTokenException, MissingSecurityTokenException {
-		Optional<ApiToken> apiTokenOptional = securityTokenService.findByToken(token);
-		if (apiTokenOptional.isPresent()) {
-			ApiToken apiToken = apiTokenOptional.get();
-			if (apiToken.getPassphrase().equals(passString)) {
-				return true;
-			} else {
-				throw new InvalidSecurityTokenException("Invalid token");
-			}
-		} else {
-			throw new MissingSecurityTokenException("Token lookup failed");
+			return true;
 		}
 	}
 
