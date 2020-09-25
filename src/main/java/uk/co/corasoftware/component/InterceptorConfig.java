@@ -17,10 +17,9 @@ public class InterceptorConfig implements WebMvcConfigurer {
 	public void addInterceptors(InterceptorRegistry registry) {
 		// @formatter:off
 		registry.addInterceptor(requestInterceptor)
-					.addPathPatterns("/api/**")
-					.excludePathPatterns("/**", 
-							"h2-console/**",
-							"/swagger-ui.html", "/alive");
+					.addPathPatterns("api/**")
+					.excludePathPatterns("h2-console/**",
+							"*swagger-ui.html", "alive");
 		// @formatter:on
 	}
 }
