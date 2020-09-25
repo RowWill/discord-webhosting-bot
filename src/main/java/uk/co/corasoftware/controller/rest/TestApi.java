@@ -42,7 +42,7 @@ public class TestApi {
 			throws InvalidSecurityTokenException {
 
 		if (!password.equals(apiDevPassword)) {
-			throw new InvalidSecurityTokenException("incorrect dev password");
+			throw new InvalidSecurityTokenException("Incorrect password");
 		}
 
 		TokenType t = null;

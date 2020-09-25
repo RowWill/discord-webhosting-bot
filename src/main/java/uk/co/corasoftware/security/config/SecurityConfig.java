@@ -16,6 +16,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				http
 					.headers().frameOptions().sameOrigin()
 			        .and()
+			        .cors()
+			        .and()
 					.csrf().ignoringAntMatchers("/h2-console/**")
 					.and()
 					.authorizeRequests()
