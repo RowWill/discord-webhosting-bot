@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import uk.co.corasoftware.bot.discord.DiscordRewardBot;
 import uk.co.corasoftware.enums.TokenType;
 import uk.co.corasoftware.security.controller.SecurityTokenController;
 import uk.co.corasoftware.security.jwt.util.JwtTokenEncoder;
@@ -41,10 +42,12 @@ public class StartupEventListener implements ApplicationListener<ContextRefreshe
 
 			LOG.info("#######################################");
 			LOG.info("########### DEVELOPMENT TOKEN #########");
-			LOG.info("#######################################");
-			LOG.info(t.getToken());
+			LOG.info("#######################################\n" + t.getToken());
 			LOG.info("#######################################");
 			LOG.info("#######################################");
 		}
+
+		DiscordRewardBot bot = new DiscordRewardBot();
+		bot.test();
 	}
 }
