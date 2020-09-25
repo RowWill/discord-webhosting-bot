@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,12 +30,12 @@ public class TestApi {
 	@Value("#{environment.BOT_DEV_PASSWORD}")
 	private String apiDevPassword;
 
-	@RequestMapping("/alive")
+	@RequestMapping(path = "/alive", method = RequestMethod.GET)
 	public ResponseEntity<String> alive() {
 		return new ResponseEntity<String>("alive", HttpStatus.OK);
 	}
 
-	@RequestMapping({ "/generate_test_token" })
+	@RequestMapping(path = { "/generate_test_token" }, method = RequestMethod.POST)
 	public ResponseEntity<ApiToken> generateDevToken(@RequestParam String password, @RequestParam String issuedBy,
 			@RequestParam String issuedTo, @RequestParam String description, @RequestParam String tokenType)
 			throws InvalidSecurityTokenException {
@@ -64,19 +65,19 @@ public class TestApi {
 		return new ResponseEntity<ApiToken>(token, HttpStatus.OK);
 	}
 
-	@RequestMapping({ "api/test-api" })
+	@RequestMapping(path = { "api/test-api" }, method = RequestMethod.GET)
 	public ResponseEntity<Reward> testApi(@RequestParam Optional<String> passphrase)
 			throws InvalidSecurityTokenException {
 		new Reward();
 		// @formatter:off
 		return new ResponseEntity<Reward>(Reward.builder()
-												.apiType(ApiType.MONGODB)
-												.name("TEST_REWARD")
-												.description("TEST REWARD")
-												.id("TEST-ID")
-												.availableAtLevel(20)
-												.rewardType(RewardType.SINGLE_DATABASE_INSTANCE)
-												.build(), HttpStatus.OK);
+					.apiType(ApiType.MONGODB)
+					.name("TEST_REWARD")
+					.description("TEST REWARD")
+					.id("TEST-ID")
+					.availableAtLevel(20)
+					.rewardType(RewardType.SINGLE_DATABASE_INSTANCE)
+					.build(), HttpStatus.OK);
 		// @formatter:on
 	}
 }
