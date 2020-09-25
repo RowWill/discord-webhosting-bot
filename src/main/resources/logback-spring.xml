@@ -1,0 +1,41 @@
+<configuration>
+	<property name="LOG_DIR" value="/opt/tomcat/logs" />
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<springProfile name="dev">
+			<file>application.log</file>
+		</springProfile>
+		<springProfile name="prod">
+			<file>${LOG_DIR}/application.log</file>
+		</springProfile>
+		<append>true</append>
+		<encoder>
+			<pattern>%-5relative %-5level %logger{35} - %msg%n</pattern>
+		</encoder>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>application.%d{yyyy-MM-dd}.gz</fileNamePattern>
+			<maxHistory>1</maxHistory>
+			<totalSizeCap>3GB</totalSizeCap>
+		</rollingPolicy>
+	</appender>
+
+	<appender name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%-5relative %-5level %logger{35} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+
+	<logger name="jdbc" level="OFF" />
+	<logger name="uk.co.corasoftware.log" level="INFO"
+		additivity="false">
+		<appender-ref ref="FILE" />
+	</logger>
+
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>
