@@ -3,7 +3,7 @@ package uk.co.corasoftware.controller.rest;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +20,14 @@ import uk.co.corasoftware.security.jwt.util.JwtTokenEncoder;
 import uk.co.corasoftware.security.model.ApiToken;
 
 @RestController
-@Profile("dev")
+//@Profile("dev")
 public class TestApi {
 
 	@Autowired
 	private SecurityTokenController securityTokenController;
+
+	@Value("#{environment.BOT_DEV_PASSWORD}")
+	private String apiDevPassword;
 
 	@RequestMapping("/alive")
 	public ResponseEntity<String> alive() {
@@ -32,15 +35,29 @@ public class TestApi {
 	}
 
 	@RequestMapping({ "api/generate_test_token" })
-	public ResponseEntity<ApiToken> generateDevToken() {
+	public ResponseEntity<ApiToken> generateDevToken(@RequestParam String password, @RequestParam String issuedBy,
+			@RequestParam String issuedTo, @RequestParam String description, @RequestParam String tokenType)
+			throws InvalidSecurityTokenException {
+
+		if (!password.equals(apiDevPassword)) {
+			throw new InvalidSecurityTokenException("incorrect dev password");
+		}
+
+		TokenType t = null;
+		if (tokenType.equals("development")) {
+			t = TokenType.DEVELOPMENT;
+		} else if (tokenType.equals("production")) {
+			t = TokenType.PRODUCTION;
+		}
+
 		// @formatter:off
 		ApiToken token = ApiToken.builder()
-				.name("test-dev-token")
-				.issuedBy("Rowan")
-				.issuedTo("testuser")
-				.description("test api token for development")
-				.token(JwtTokenEncoder.createJWT("test-id", "Rowan", "test development token", 0))
-				.tokenType(TokenType.DEVELOPMENT)
+				.name(issuedTo + "-api-token")
+				.issuedBy(issuedBy)
+				.issuedTo(issuedTo)
+				.description(description)
+				.tokenType(t)
+				.token(JwtTokenEncoder.createJWT(issuedTo + "-api-token", issuedBy, t.name(), 0))
 				.build();
 		// @formatter:on
 		token = securityTokenController.save(token);

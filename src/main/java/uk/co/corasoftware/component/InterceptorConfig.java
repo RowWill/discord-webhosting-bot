@@ -20,7 +20,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
 					.addPathPatterns("/api/**")
 					.excludePathPatterns("/**", 
 							"h2-console/**",
-							"/swagger-ui.html");
+							"/swagger-ui.html", "/alive");
 		// @formatter:on
 	}
 }
