@@ -54,6 +54,7 @@ public class TestApi {
 		// @formatter:off
 		ApiToken token = ApiToken.builder()
 				.name(issuedTo + "-api-token")
+				.passphrase(issuedTo)
 				.issuedBy(issuedBy)
 				.issuedTo(issuedTo)
 				.description(description)
