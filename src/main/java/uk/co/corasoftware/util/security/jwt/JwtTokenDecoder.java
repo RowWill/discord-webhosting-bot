@@ -1,4 +1,4 @@
-package uk.co.corasoftware.security.jwt.util;
+package uk.co.corasoftware.util.security.jwt;
 
 import javax.xml.bind.DatatypeConverter;
 

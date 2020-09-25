@@ -1,4 +1,4 @@
-package uk.co.corasoftware.controller.rest;
+package uk.co.corasoftware.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import uk.co.corasoftware.controller.security.SecurityTokenController;
 import uk.co.corasoftware.enums.ApiType;
 import uk.co.corasoftware.enums.RewardType;
 import uk.co.corasoftware.enums.TokenType;
 import uk.co.corasoftware.exception.InvalidSecurityTokenException;
 import uk.co.corasoftware.model.Reward;
-import uk.co.corasoftware.security.controller.SecurityTokenController;
-import uk.co.corasoftware.security.jwt.util.JwtTokenEncoder;
-import uk.co.corasoftware.security.model.ApiToken;
+import uk.co.corasoftware.model.security.ApiToken;
+import uk.co.corasoftware.util.security.jwt.JwtTokenEncoder;
 
 @RestController
 //@Profile("dev")

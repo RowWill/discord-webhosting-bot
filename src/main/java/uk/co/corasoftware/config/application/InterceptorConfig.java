@@ -1,4 +1,4 @@
-package uk.co.corasoftware.config;
+package uk.co.corasoftware.config.application;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

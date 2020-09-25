@@ -1,12 +1,12 @@
-package uk.co.corasoftware.security.service;
+package uk.co.corasoftware.service.security;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import uk.co.corasoftware.security.model.ApiToken;
-import uk.co.corasoftware.security.repo.SecurityTokenRepo;
+import uk.co.corasoftware.model.security.ApiToken;
+import uk.co.corasoftware.repo.security.SecurityTokenRepo;
 import uk.co.corasoftware.service.Service;
 
 public class SecurityTokenService implements Service<ApiToken> {

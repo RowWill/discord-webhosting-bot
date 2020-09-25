@@ -9,10 +9,10 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import uk.co.corasoftware.controller.security.SecurityTokenController;
 import uk.co.corasoftware.enums.TokenType;
-import uk.co.corasoftware.security.controller.SecurityTokenController;
-import uk.co.corasoftware.security.jwt.util.JwtTokenEncoder;
-import uk.co.corasoftware.security.model.ApiToken;
+import uk.co.corasoftware.model.security.ApiToken;
+import uk.co.corasoftware.util.security.jwt.JwtTokenEncoder;
 
 @Component
 public class StartupEventListener implements ApplicationListener<ContextRefreshedEvent> {

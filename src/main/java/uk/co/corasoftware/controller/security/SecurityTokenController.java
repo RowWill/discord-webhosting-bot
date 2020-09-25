@@ -1,4 +1,4 @@
-package uk.co.corasoftware.security.controller;
+package uk.co.corasoftware.controller.security;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import uk.co.corasoftware.exception.InvalidSecurityTokenException;
 import uk.co.corasoftware.exception.MissingSecurityTokenException;
-import uk.co.corasoftware.security.jwt.util.JwtTokenDecoder;
-import uk.co.corasoftware.security.model.ApiToken;
-import uk.co.corasoftware.security.service.SecurityTokenService;
+import uk.co.corasoftware.model.security.ApiToken;
 import uk.co.corasoftware.service.Service;
+import uk.co.corasoftware.service.security.SecurityTokenService;
+import uk.co.corasoftware.util.security.jwt.JwtTokenDecoder;
 
 public class SecurityTokenController implements Service<ApiToken> {
 

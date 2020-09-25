@@ -1,4 +1,4 @@
-package uk.co.corasoftware.security.model;
+package uk.co.corasoftware.model.security;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

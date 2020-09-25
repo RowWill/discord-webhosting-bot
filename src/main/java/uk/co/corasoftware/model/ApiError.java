@@ -1,4 +1,4 @@
-package uk.co.corasoftware.api.model;
+package uk.co.corasoftware.model;
 
 import java.util.Arrays;
 import java.util.List;

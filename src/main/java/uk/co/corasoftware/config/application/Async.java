@@ -1,4 +1,4 @@
-package uk.co.corasoftware.config;
+package uk.co.corasoftware.config.application;
 
 import java.util.concurrent.Executor;
 

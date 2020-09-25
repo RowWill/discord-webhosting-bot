@@ -1,4 +1,4 @@
-package uk.co.corasoftware.controller.rest;
+package uk.co.corasoftware.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,9 +20,9 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import io.jsonwebtoken.MalformedJwtException;
-import uk.co.corasoftware.api.model.ApiError;
 import uk.co.corasoftware.exception.InvalidSecurityTokenException;
 import uk.co.corasoftware.exception.MissingSecurityTokenException;
+import uk.co.corasoftware.model.ApiError;
 
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {

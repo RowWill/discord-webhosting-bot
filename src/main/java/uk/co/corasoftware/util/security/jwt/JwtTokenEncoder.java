@@ -1,4 +1,4 @@
-package uk.co.corasoftware.security.jwt.util;
+package uk.co.corasoftware.util.security.jwt;
 
 import java.security.Key;
 import java.util.Date;
