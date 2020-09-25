@@ -2,12 +2,7 @@
 	<property name="LOG_DIR" value="/opt/tomcat/logs" />
 	<appender name="FILE"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<springProfile name="dev">
-			<file>application.log</file>
-		</springProfile>
-		<springProfile name="prod">
-			<file>${LOG_DIR}/application.log</file>
-		</springProfile>
+		<file>${LOG_DIR}/application.log</file>
 		<append>true</append>
 		<encoder>
 			<pattern>%-5relative %-5level %logger{35} - %msg%n</pattern>
