@@ -35,7 +35,7 @@ public class TestApi {
 		return new ResponseEntity<String>("alive", HttpStatus.OK);
 	}
 
-	@RequestMapping(path = { "/generate_test_token" }, method = RequestMethod.POST)
+	@RequestMapping(path = { "/generate_test_token" }, method = RequestMethod.GET)
 	public ResponseEntity<ApiToken> generateDevToken(@RequestParam String password, @RequestParam String issuedBy,
 			@RequestParam String issuedTo, @RequestParam String description, @RequestParam String tokenType)
 			throws InvalidSecurityTokenException {
