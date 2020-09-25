@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import uk.co.corasoftware.controller.application.SecurityTokenController;
 import uk.co.corasoftware.enums.TokenType;
 import uk.co.corasoftware.exception.InvalidSecurityTokenException;
 import uk.co.corasoftware.model.Reward;
+import uk.co.corasoftware.security.controller.SecurityTokenController;
 import uk.co.corasoftware.security.jwt.util.JwtTokenEncoder;
 import uk.co.corasoftware.security.model.ApiToken;
 

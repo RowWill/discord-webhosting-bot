@@ -9,8 +9,8 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
-import uk.co.corasoftware.controller.application.SecurityTokenController;
 import uk.co.corasoftware.enums.TokenType;
+import uk.co.corasoftware.security.controller.SecurityTokenController;
 import uk.co.corasoftware.security.jwt.util.JwtTokenEncoder;
 import uk.co.corasoftware.security.model.ApiToken;
 

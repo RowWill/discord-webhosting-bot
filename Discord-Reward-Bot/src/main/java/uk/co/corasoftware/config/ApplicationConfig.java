@@ -11,7 +11,7 @@ import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import uk.co.corasoftware.component.interceptor.RequestInterceptor;
-import uk.co.corasoftware.controller.application.SecurityTokenController;
+import uk.co.corasoftware.security.controller.SecurityTokenController;
 import uk.co.corasoftware.security.service.SecurityTokenService;
 
 @Configuration
