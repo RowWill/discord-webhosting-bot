@@ -1,7 +1,5 @@
 package uk.co.corasoftware.controller.rest;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -38,7 +36,7 @@ public class TestApi {
 		return new ResponseEntity<String>("alive", HttpStatus.OK);
 	}
 
-	@RequestMapping(path = { "/generate_test_token" }, method = RequestMethod.GET)
+	@RequestMapping(path = { "/generate-dev-token" }, method = RequestMethod.GET)
 	public ResponseEntity<ApiToken> generateDevToken(@RequestParam String password, @RequestParam String issuedBy,
 			@RequestParam String issuedTo, @RequestParam String description, @RequestParam String tokenType)
 			throws InvalidSecurityTokenException {
@@ -69,8 +67,7 @@ public class TestApi {
 	}
 
 	@RequestMapping(path = { "api/test-api" }, method = RequestMethod.GET)
-	public ResponseEntity<Reward> testApi(@RequestParam Optional<String> passphrase)
-			throws InvalidSecurityTokenException {
+	public ResponseEntity<Reward> testApi(@RequestParam String token) throws InvalidSecurityTokenException {
 		new Reward();
 		// @formatter:off
 		return new ResponseEntity<Reward>(Reward.builder()

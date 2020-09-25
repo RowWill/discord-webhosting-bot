@@ -17,10 +17,9 @@ public class SecurityTokenController implements Service<ApiToken> {
 	@Autowired
 	private SecurityTokenService securityTokenService;
 
-	public boolean isValidToken(String token, String user)
-			throws MissingSecurityTokenException, InvalidSecurityTokenException {
+	public boolean isValidToken(String token) throws MissingSecurityTokenException, InvalidSecurityTokenException {
 		if (token == null || token.isEmpty()) {
-			throw new MissingSecurityTokenException("Request missing token header");
+			throw new MissingSecurityTokenException("Request missing token parameter");
 		} else {
 			boolean isValidRequest = JwtTokenDecoder.isValidToken(token);
 			if (!isValidRequest) {

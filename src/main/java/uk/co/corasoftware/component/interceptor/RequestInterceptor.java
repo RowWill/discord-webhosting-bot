@@ -16,8 +16,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		boolean isValid = securityTokenController.isValidToken(request.getHeader("token"),
-				request.getParameter("passphrase"));
+		boolean isValid = securityTokenController.isValidToken(request.getParameter("token"));
 
 		return isValid;
 	}
