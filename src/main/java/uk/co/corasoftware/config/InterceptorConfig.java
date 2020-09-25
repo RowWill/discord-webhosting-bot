@@ -1,4 +1,4 @@
-package uk.co.corasoftware.component;
+package uk.co.corasoftware.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,9 +17,9 @@ public class InterceptorConfig implements WebMvcConfigurer {
 	public void addInterceptors(InterceptorRegistry registry) {
 		// @formatter:off
 		registry.addInterceptor(requestInterceptor)
-					.addPathPatterns("api/**")
+					.addPathPatterns("/api/**")
 					.excludePathPatterns("h2-console/**",
-							"*swagger-ui.html", "alive");
+							"swagger-ui.html", "alive");
 		// @formatter:on
 	}
 }
