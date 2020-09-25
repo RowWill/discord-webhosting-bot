@@ -3,7 +3,6 @@ package uk.co.corasoftware.controller.rest;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,14 +47,12 @@ public class TestApi {
 		return new ResponseEntity<ApiToken>(token, HttpStatus.OK);
 	}
 
-	@Value("${message:Hello default}")
-	private String message;
-
 	@RequestMapping({ "api/test-api" })
 	public ResponseEntity<Reward> testApi(@RequestParam Optional<String> passphrase)
 			throws InvalidSecurityTokenException {
+		new Reward();
 		// @formatter:off
-		return new ResponseEntity<Reward>(new Reward().builder()
+		return new ResponseEntity<Reward>(Reward.builder()
 												.apiType(ApiType.MONGODB)
 												.name("TEST_REWARD")
 												.description("TEST REWARD")
