@@ -6,6 +6,7 @@ target/
 
 data/**
 *.log
+*.7z
 
 ### STS ###
 .apt_generated
