@@ -38,5 +38,5 @@ public class RedeemableService {
 	private ApiType apiType;
 
 	@OneToMany(mappedBy = "id")
-	private List<InstanceArgument> argument;
+	private List<InstanceArgument> arguments;
 }
