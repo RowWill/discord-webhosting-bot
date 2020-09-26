@@ -74,10 +74,41 @@ public class StartupEventListener implements ApplicationListener<ContextRefreshe
 				.sslState(false).build();
 
 		List<Node> nodes = new ArrayList();
+		// @formatter:off
 		for (int i = 1; i <= 5; i++) {
-			Node node = Node.builder().displayName("node-" + UUID.randomUUID().toString()).nodeType(NodeType.NODEJS)
-					.nodeGroup("cp" + i).diskLimit(10).extip(0).extipv6(0).fixedCloudlets(1).flexibleCloudlets(4)
-					.restartDelay(30).tag("tag-" + i).scalingMode(ScalingMode.STATEFUL).build();
+			Node node = Node.builder()
+					.displayName("node-" + UUID.randomUUID().toString())
+					.nodeGroup("cp" + i).diskLimit(10)
+					.extip(0)
+					.extipv6(0)
+					.fixedCloudlets(1)
+					.flexibleCloudlets(4)
+					.restartDelay(30)
+					.tag("tag-" + i)
+					.scalingMode(ScalingMode.STATEFUL)
+					.build();
+			switch(i) {
+				case 1 :{
+					node.setNodeType(NodeType.NODEJS);
+					break;
+				}
+				case 2:{
+					node.setNodeType(NodeType.TOMCAT);
+					break;
+				}
+				case 3:{
+					node.setNodeType(NodeType.PHP_NGINX);
+					break;
+				}
+				case 4:{
+					node.setNodeType(NodeType.MONGODB);
+					break;
+				}
+				case 5:{
+					node.setNodeType(NodeType.PYTHON_APACHE);
+				}
+			}
+			
 			nodes.add(node);
 		}
 
@@ -87,6 +118,7 @@ public class StartupEventListener implements ApplicationListener<ContextRefreshe
 		ServiceProduct service = ServiceProduct.builder().name("Test Product").description("Test Product Description")
 				.environment(environment).instanceType(InstanceType.SINGLE_APPLICATION_SERVER).apiType(ApiType.JELASTIC)
 				.nodes(nodes).build();
+		// @formatter:on
 
 		service = serviceProductRepo.save(service);
 	}
