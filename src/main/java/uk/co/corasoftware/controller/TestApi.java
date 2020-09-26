@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import uk.co.corasoftware.controller.security.SecurityTokenController;
 import uk.co.corasoftware.enums.ApiType;
+import uk.co.corasoftware.enums.InstanceType;
 import uk.co.corasoftware.enums.NodeType;
 import uk.co.corasoftware.enums.ScalingMode;
 import uk.co.corasoftware.exception.InvalidSecurityTokenException;
@@ -91,6 +92,7 @@ public class TestApi {
 				.name("Test Product")
 				.description("Test Product Description")
 				.environment(environment)
+				.instanceType(InstanceType.SINGLE_APPLICATION_SERVER_NODE)
 				.apiType(ApiType.JELASTIC)
 				.nodes(nodes)
 				.build();
