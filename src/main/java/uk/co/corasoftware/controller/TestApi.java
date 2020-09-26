@@ -2,6 +2,7 @@ package uk.co.corasoftware.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -70,7 +71,7 @@ public class TestApi {
 		List<Node> nodes = new ArrayList();
 		for(int i = 1; i <= 5; i++) {
 			Node node = Node.builder()
-					.displayName("node-" + i)
+					.displayName("node-" + UUID.randomUUID().toString())
 					.nodeType(NodeType.NODEJS)
 					.nodeGroup("cp" + i)
 					.diskLimit(10)
@@ -92,7 +93,7 @@ public class TestApi {
 				.name("Test Product")
 				.description("Test Product Description")
 				.environment(environment)
-				.instanceType(InstanceType.SINGLE_APPLICATION_SERVER_NODE)
+				.instanceType(InstanceType.SINGLE_APPLICATION_SERVER)
 				.apiType(ApiType.JELASTIC)
 				.nodes(nodes)
 				.build();

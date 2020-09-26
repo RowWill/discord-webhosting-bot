@@ -29,7 +29,7 @@ public class Node {
 	@Column(name = "tag")
 	private String tag;
 
-	@Column(name = "display_name")
+	@Column(name = "display_name", unique = true)
 	private String displayName;
 
 	@Column(name = "node_group")
