@@ -1,4 +1,4 @@
-package uk.co.corasoftware.controller;
+package uk.co.corasoftware.controller.advice;
 
 import java.util.ArrayList;
 import java.util.List;

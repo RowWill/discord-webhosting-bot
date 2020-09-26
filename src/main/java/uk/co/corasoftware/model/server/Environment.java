@@ -5,17 +5,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import uk.co.corasoftware.model.IssuedService;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "environment")
 public class Environment {
 
@@ -34,9 +35,4 @@ public class Environment {
 
 	@Column(name = "ssl_enabled")
 	private boolean sslState;
-
-	@ManyToOne
-	@JoinColumn(name = "issued_service_id")
-	private IssuedService issuedService;
-
 }

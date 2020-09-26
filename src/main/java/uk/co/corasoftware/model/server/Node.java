@@ -5,19 +5,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import uk.co.corasoftware.enums.NodeType;
 import uk.co.corasoftware.enums.ScalingMode;
-import uk.co.corasoftware.model.IssuedService;
 
 @Data
 @Entity
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "node")
 public class Node {
 
@@ -58,7 +59,4 @@ public class Node {
 	@Column(name = "scaling_mode")
 	private ScalingMode scalingMode;
 
-	@ManyToOne
-	@JoinColumn(name = "issued_service_id")
-	private IssuedService issuedInstance;
 }
