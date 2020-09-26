@@ -2,7 +2,7 @@
 	<property name="LOG_DIR" value="/opt/tomcat/logs" />
 	<appender name="FILE"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>application.log</file>
+		<file>${LOG_DIR}/application.log</file>
 		<append>true</append>
 		<encoder>
 			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
