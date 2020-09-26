@@ -11,18 +11,17 @@ import org.hibernate.annotations.GenericGenerator;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.Setter;
 import uk.co.corasoftware.enums.TokenType;
 
+@Data
 @Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
 @Table(name = "api_token")
 public class ApiToken {
 
@@ -32,35 +31,26 @@ public class ApiToken {
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	private String id;
 
-	@Getter
-	@Setter
 	@NonNull
 	@Column(name = "token", unique = true)
 	private String token;
 
-	@Getter
-	@Setter
 	@NonNull
 	@Column(name = "name", unique = true)
 	private String name;
 
-	@Getter
-	@Setter
+	@NonNull
 	@Column(name = "issued_to", unique = true)
 	private String issuedTo;
 
-	@Getter
-	@Setter
 	@Column(name = "description")
 	private String description;
 
-	@Getter
-	@Setter
+	@NonNull
 	@Column(name = "issued_by")
 	private String issuedBy;
 
-	@Getter
-	@Setter
+	@NonNull
 	@Column(name = "token_type")
 	private TokenType tokenType;
 }

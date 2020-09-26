@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import uk.co.corasoftware.controller.security.SecurityTokenController;
 import uk.co.corasoftware.enums.ApiType;
-import uk.co.corasoftware.enums.RewardType;
+import uk.co.corasoftware.enums.InstanceType;
 import uk.co.corasoftware.enums.TokenType;
 import uk.co.corasoftware.exception.InvalidSecurityTokenException;
-import uk.co.corasoftware.model.Reward;
+import uk.co.corasoftware.model.RedeemableService;
 import uk.co.corasoftware.model.security.ApiToken;
 import uk.co.corasoftware.util.security.jwt.JwtTokenEncoder;
 
@@ -67,16 +67,13 @@ public class TestApi {
 	}
 
 	@RequestMapping(path = { "api/test-api" }, method = RequestMethod.GET)
-	public ResponseEntity<Reward> testApi(@RequestParam String token) throws InvalidSecurityTokenException {
-		new Reward();
+	public ResponseEntity<RedeemableService> testApi(@RequestParam String token) throws InvalidSecurityTokenException {
 		// @formatter:off
-		return new ResponseEntity<Reward>(Reward.builder()
+		return new ResponseEntity<RedeemableService>(RedeemableService.builder()
 					.apiType(ApiType.MONGODB)
 					.name("TEST_REWARD")
 					.description("TEST REWARD")
-					.id("TEST-ID")
-					.availableAtLevel(20)
-					.rewardType(RewardType.SINGLE_DATABASE_INSTANCE)
+					.instanceType(InstanceType.SINGLE_DATABASE_INSTANCE)
 					.build(), HttpStatus.OK);
 		// @formatter:on
 	}

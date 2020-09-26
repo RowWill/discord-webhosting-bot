@@ -5,19 +5,13 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
+@Data
 public class ApiError {
 
-	@Setter
-	@Getter
 	private HttpStatus status;
-	@Setter
-	@Getter
 	private String message;
-	@Setter
-	@Getter
 	private List<String> errors;
 
 	public ApiError(HttpStatus status, String message, List<String> errors) {

@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import uk.co.corasoftware.exception.InvalidSecurityTokenException;
 import uk.co.corasoftware.exception.MissingSecurityTokenException;
 import uk.co.corasoftware.model.security.ApiToken;
-import uk.co.corasoftware.service.Service;
+import uk.co.corasoftware.service.IService;
 import uk.co.corasoftware.service.security.SecurityTokenService;
 import uk.co.corasoftware.util.security.jwt.JwtTokenDecoder;
 
-public class SecurityTokenController implements Service<ApiToken> {
+public class SecurityTokenController implements IService<ApiToken> {
 
 	@Autowired
 	private SecurityTokenService securityTokenService;

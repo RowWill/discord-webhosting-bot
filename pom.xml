@@ -10,11 +10,11 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>uk.co.corasoftware</groupId>
-	<artifactId>discord-reward-bot</artifactId>
+	<artifactId>discord-webhosting-bot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>Discord-Reward-Bot</name>
-	<description>Discord Reward Bot</description>
+	<name>Discord-Web-Hosting-Bot</name>
+	<description>Discord Web Hosting Bot</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -24,7 +24,7 @@
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<main.class>uk.co.corasoftware.DiscordRewardBotApplication</main.class>
+		<main.class>uk.co.corasoftware.DiscordWebHostingBotApplication</main.class>
 	</properties>
 
 	<dependencies>

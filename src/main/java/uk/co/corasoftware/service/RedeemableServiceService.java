@@ -5,16 +5,16 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import uk.co.corasoftware.model.Reward;
-import uk.co.corasoftware.repo.RewardRepo;
+import uk.co.corasoftware.model.RedeemableService;
+import uk.co.corasoftware.repo.RedeemableInstanceRepo;
 
-public class RewardService implements Service<Reward> {
+public class RedeemableServiceService implements IService<RedeemableService> {
 
 	@Autowired
-	private RewardRepo repo;
+	private RedeemableInstanceRepo repo;
 
 	@Override
-	public Reward save(Reward entity) {
+	public RedeemableService save(RedeemableService entity) {
 		return repo.save(entity);
 	}
 
@@ -24,7 +24,7 @@ public class RewardService implements Service<Reward> {
 	}
 
 	@Override
-	public void delete(Reward entity) {
+	public void delete(RedeemableService entity) {
 		repo.delete(entity);
 	}
 
@@ -34,12 +34,12 @@ public class RewardService implements Service<Reward> {
 	}
 
 	@Override
-	public Optional<Reward> findById(String id) {
+	public Optional<RedeemableService> findById(String id) {
 		return repo.findById(id);
 	}
 
 	@Override
-	public List<Reward> findAll() {
+	public List<RedeemableService> findAll() {
 		return repo.findAll();
 	}
 

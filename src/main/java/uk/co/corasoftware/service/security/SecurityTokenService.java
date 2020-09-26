@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import uk.co.corasoftware.model.security.ApiToken;
 import uk.co.corasoftware.repo.security.SecurityTokenRepo;
-import uk.co.corasoftware.service.Service;
+import uk.co.corasoftware.service.IService;
 
-public class SecurityTokenService implements Service<ApiToken> {
+public class SecurityTokenService implements IService<ApiToken> {
 
 	@Autowired
 	private SecurityTokenRepo repo;
