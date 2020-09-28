@@ -11,7 +11,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
-import uk.co.corasoftware.controller.security.SecurityTokenController;
+import uk.co.corasoftware.controller.service.security.SecurityTokenController;
 import uk.co.corasoftware.enums.ApiType;
 import uk.co.corasoftware.enums.InstanceType;
 import uk.co.corasoftware.enums.NodeType;
@@ -56,7 +56,7 @@ public class StartupEventListener implements ApplicationListener<ContextRefreshe
 					.issuedTo("ROOT")
 					.description("Root Token")
 					.token(JwtTokenEncoder.createJWT("ROOT", "ROOT", "ROOT Token", 0))
-					.tokenType(TokenType.PRODUCTION)
+					.tokenType(TokenType.DEVELOPMENT)
 					.build();
 			// @formatter:on
 			securityTokenController.save(token);
@@ -116,7 +116,7 @@ public class StartupEventListener implements ApplicationListener<ContextRefreshe
 		environment = environmentRepo.save(environment);
 
 		ServiceProduct service = ServiceProduct.builder().name("Test Product").description("Test Product Description")
-				.environment(environment).instanceType(InstanceType.SINGLE_APPLICATION_SERVER).apiType(ApiType.JELASTIC)
+				.environment(environment).instanceType(InstanceType.MULTI_NODE_APPLICATION_SERVER).apiType(ApiType.JELASTIC)
 				.nodes(nodes).build();
 		// @formatter:on
 

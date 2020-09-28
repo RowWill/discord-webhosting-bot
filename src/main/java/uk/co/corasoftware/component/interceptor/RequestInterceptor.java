@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import uk.co.corasoftware.controller.security.SecurityTokenController;
+import uk.co.corasoftware.controller.service.security.SecurityTokenController;
 
 public class RequestInterceptor extends HandlerInterceptorAdapter {
 
