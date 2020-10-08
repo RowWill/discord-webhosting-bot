@@ -260,8 +260,8 @@
 		</repository>
 	</repositories>
 	<scm>
-		<connection>scm:git:https://github.com/RowWill/discord-reward-bot.git</connection>
-		<developerConnection>scm:git:https://github.com/RowWill/discord-reward-bot.git</developerConnection>
-		<url>https://RowWill@https://github.com/RowWill/discord-reward-bot.git</url>
+		<connection>scm:git:https://github.com/RowWill/discord-webhosting-bot.git</connection>
+		<developerConnection>scm:git:https://github.com/RowWill/discord-webhosting-bot.git</developerConnection>
+		<url>https://RowWill@https://github.com/RowWill/discord-webhosting-bot.git</url>
 	</scm>
 </project>
