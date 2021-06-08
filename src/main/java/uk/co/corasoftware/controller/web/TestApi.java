@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import uk.co.corasoftware.exception.InvalidSecurityTokenException;
 import uk.co.corasoftware.model.ServiceProduct;
 import uk.co.corasoftware.repo.ServiceProductRepo;
 import uk.co.corasoftware.repo.server.EnvironmentRepo;
@@ -40,12 +39,8 @@ public class TestApi {
 	}
 
 	@RequestMapping(path = { "api/test-api" }, method = RequestMethod.GET)
-	public ResponseEntity<ServiceProduct> testApi(@RequestParam String token) throws InvalidSecurityTokenException {
-		// @formatter:off
-		
-		ServiceProduct product = serviceProductRepo.findAll().get(0);
-		
-		return new ResponseEntity<ServiceProduct>(product, HttpStatus.OK);
-		// @formatter:on
+	public ResponseEntity<ServiceProduct> testApi(@RequestParam
+	String token) {
+		return new ResponseEntity<>(serviceProductRepo.findAll().get(0), HttpStatus.OK);
 	}
 }
