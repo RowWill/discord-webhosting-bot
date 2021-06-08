@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import uk.co.corasoftware.model.ServiceProduct;
 import uk.co.corasoftware.repo.ServiceProductRepo;
 
-public class RedeemableServiceService implements IService<ServiceProduct> {
+public class ServiceProductService implements IService<ServiceProduct> {
 
 	@Autowired
 	private ServiceProductRepo repo;
