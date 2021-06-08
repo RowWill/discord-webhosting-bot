@@ -45,7 +45,7 @@ public class ApplicationConfig {
 				.title("Discord Reward Bot API")
 				.description("Backend API Documentation")
 				.version("1.0")
-				.contact(new Contact("Fluffytme", null, "fluffytme@gmail.com"))
+				.contact(new Contact("Rowan Williams", null, "rowan.williams1989@gmail.com"))
 				.build();
 		// @formatter:on
 	}
