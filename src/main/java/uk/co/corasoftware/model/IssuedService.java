@@ -14,8 +14,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.co.corasoftware.enums.ApiType;
@@ -25,9 +23,7 @@ import uk.co.corasoftware.model.server.Node;
 
 @Data
 @Entity
-@Builder
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "issued_service")
 public class IssuedService {
 
@@ -36,7 +32,7 @@ public class IssuedService {
 	private int id;
 
 	@ManyToOne
-	@JoinColumn(name = "customer_id")
+	@JoinColumn(name = "instances")
 	private Customer customerId;
 
 	@Column(name = "description")

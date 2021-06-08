@@ -48,7 +48,11 @@ public class StartupEventListener implements ApplicationListener<ContextRefreshe
 		List<ApiToken> tokens = securityTokenController.findAll();
 		if (tokens == null || tokens.isEmpty()) {
 
-			LOG.info("No root token detected. Generating token...");
+			/*
+			 * DEBUG
+			 * TODO implement
+			 */
+			LOG.debug("No root token detected. Generating token...");
 			// @formatter:off
 			ApiToken token = ApiToken.builder()
 					.name("ROOT_TOKEN")
@@ -60,20 +64,20 @@ public class StartupEventListener implements ApplicationListener<ContextRefreshe
 					.build();
 			// @formatter:on
 			securityTokenController.save(token);
-			LOG.info("Root token generated");
+			LOG.debug("Root token generated");
 
-			/*
-			 * DEBUG
-			 */
 			generateTestData();
 		}
 	}
 
+	/*
+	 * Tests
+	 */
 	private void generateTestData() {
 		Environment environment = Environment.builder().shortDomain("test-domain").region("LON-1").isHaEnabled(false)
 				.sslState(false).build();
 
-		List<Node> nodes = new ArrayList();
+		List<Node> nodes = new ArrayList<>();
 		// @formatter:off
 		for (int i = 1; i <= 5; i++) {
 			Node node = Node.builder()

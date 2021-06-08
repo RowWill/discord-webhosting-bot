@@ -20,14 +20,15 @@ public class SecurityTokenController implements IService<ApiToken> {
 	public boolean isValidToken(String token) throws MissingSecurityTokenException, InvalidSecurityTokenException {
 		if (token == null || token.isEmpty()) {
 			throw new MissingSecurityTokenException("Request missing token parameter");
-		} else {
-			boolean isValidRequest = JwtTokenDecoder.isValidToken(token);
-			if (!isValidRequest) {
-				throw new InvalidSecurityTokenException("Invalid token");
-			}
-
-			return true;
 		}
+
+		boolean isValidRequest = JwtTokenDecoder.isValidToken(token);
+		if (!isValidRequest) {
+			throw new InvalidSecurityTokenException("Invalid token");
+		}
+
+		return true;
+
 	}
 
 	@Override

@@ -19,8 +19,6 @@ public class Async {
 
 	@Bean(name = "taskExecutor")
 	public Executor taskExecutor() {
-		LOG.debug("Creating Async Task Executor");
-
 		final ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
 
 		executor.setCorePoolSize(5);
@@ -28,6 +26,8 @@ public class Async {
 		executor.setQueueCapacity(100);
 		executor.setThreadNamePrefix("BotThread-");
 		executor.initialize();
+
+		LOG.debug("Async Task Executor created...");
 
 		return executor;
 	}

@@ -4,6 +4,10 @@ public class MissingSecurityTokenException extends Exception {
 
 	private static final long serialVersionUID = 2968553205886200708L;
 
+	public MissingSecurityTokenException(String message, Throwable cause) {
+		super(message, cause);
+	}
+
 	public MissingSecurityTokenException(String message) {
 		super(message);
 	}

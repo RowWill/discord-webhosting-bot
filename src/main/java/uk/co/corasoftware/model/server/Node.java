@@ -7,18 +7,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import uk.co.corasoftware.enums.NodeType;
 import uk.co.corasoftware.enums.ScalingMode;
 
 @Data
 @Entity
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "node")
 public class Node {
 
@@ -35,7 +31,7 @@ public class Node {
 	@Column(name = "node_group")
 	private String nodeGroup;
 
-	@Column(name = "disklimit")
+	@Column(name = "disk_limit")
 	private int diskLimit;
 
 	@Column(name = "extip")

@@ -7,8 +7,4 @@ public class DiscordRewardBot {
 	@Value("${bot.discord.token}")
 	private String discord_token;
 
-	public void test() {
-		System.out.println(discord_token);
-	}
-
 }

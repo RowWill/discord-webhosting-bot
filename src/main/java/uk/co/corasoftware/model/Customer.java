@@ -14,9 +14,11 @@ import org.hibernate.annotations.GenericGenerator;
 
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@NoArgsConstructor
 @Table(name = "customer")
 public class Customer {
 
@@ -29,13 +31,13 @@ public class Customer {
 	@Column(name = "email")
 	private String email;
 
-	@Column(name = "discordId")
+	@Column(name = "discord_id")
 	private String discordId;
 
-	@Column(name = "discordUsername")
+	@Column(name = "discord_username")
 	private String discordUsername;
 
-	@OneToMany(mappedBy = "customerId")
+	@OneToMany(targetEntity = IssuedService.class)
 	private List<IssuedService> instances;
 
 }
