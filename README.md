@@ -7,6 +7,8 @@ A bot for managing hosting instances.
 /alive GET
   # Returns 
     healthcheck
+##
+##
 
 /generate_test_token GET
   # Required parameters:
@@ -17,9 +19,8 @@ A bot for managing hosting instances.
    - tokenType | enum | DEVELOPMENT or PRODUCTION
   # Optional parameters
    - description | String | a decription for the token
-   - 
 /test-api GET
   # Required parameters
-    - token | String | the api token
-  # Returns
-  JSON detailing available node(s) and environment(s) and their relevant config 
+   - token | String | the api token
+   # Returns 
+    JSON detailing available node(s) and environment(s) with their relevant config 
