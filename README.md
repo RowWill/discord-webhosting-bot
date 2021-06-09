@@ -4,13 +4,12 @@ A bot for managing hosting instances.
 
 # Endpoints available:
 
-/alive GET
+# /alive GET
   # Returns 
     healthcheck
 ##
 ##
-
-/generate_test_token GET
+# /generate_test_token GET
   # Required parameters:
    - password | String | The development or production password to generate a key
                          Default dev password: password123
@@ -19,7 +18,11 @@ A bot for managing hosting instances.
    - tokenType | enum | DEVELOPMENT or PRODUCTION
   # Optional parameters
    - description | String | a decription for the token
-/test-api GET
+   # Returns 
+    An Api Token
+##
+##
+# /test-api GET
   # Required parameters
    - token | String | the api token
    # Returns 
