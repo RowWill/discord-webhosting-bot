@@ -50,7 +50,7 @@ public class TestApi {
 			@RequestParam String password,
 			@RequestParam String issuedBy,
 			@RequestParam String issuedTo,
-			@RequestParam String description,
+			@RequestParam(required = false) String description,
 			@RequestParam TokenType tokenType)
 			throws InvalidSecurityTokenException {
 

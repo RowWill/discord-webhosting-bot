@@ -13,18 +13,17 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 @EnableAsync
 @Configuration
 @EnableScheduling
-public class Async {
+public class AsyncConfig {
 
-	private static final Logger LOG = LoggerFactory.getLogger(Async.class);
+	private static final Logger LOG = LoggerFactory.getLogger(AsyncConfig.class);
 
-	@Bean(name = "taskExecutor")
+	@Bean
 	public Executor taskExecutor() {
 		final ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-
 		executor.setCorePoolSize(5);
 		executor.setMaxPoolSize(10);
 		executor.setQueueCapacity(100);
-		executor.setThreadNamePrefix("BotThread-");
+		executor.setThreadNamePrefix("PoolThread-");
 		executor.initialize();
 
 		LOG.debug("Async Task Executor created...");
