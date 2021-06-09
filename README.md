@@ -22,7 +22,7 @@ A bot for managing hosting instances.
     An Api Token
 ##
 ##
-# /test-api GET
+# api/test-api GET
   # Required parameters
    - token | String | the api token
    # Returns 
