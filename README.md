@@ -21,3 +21,5 @@ A bot for managing hosting instances.
 /test-api GET
   # Required parameters
     - token | String | the api token
+  # Returns
+  JSON detailing available node(s) and environment(s) and their relevant config 
