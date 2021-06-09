@@ -39,21 +39,32 @@ public class TestApi {
 	}
 
 	@GetMapping(path = { "api/test-api" })
-	public ResponseEntity<ServiceProduct> testApi(@RequestParam String token) {
+	public ResponseEntity<ServiceProduct> testApi(@RequestParam
+	String token) {
 		return new ResponseEntity<>(serviceProductRepo.findAll().get(0), HttpStatus.OK);
 	}
 
 	@RequestMapping({ "/generate_test_token" })
-	public ResponseEntity<ApiToken> generateDevToken(
-			@RequestParam String password,
-			@RequestParam String issuedBy,
-			@RequestParam String issuedTo,
-			@RequestParam String description,
-			@RequestParam TokenType tokenType)
+	public ResponseEntity<ApiToken> generateDevToken(@RequestParam
+	String password, @RequestParam
+	String issuedBy,
+			@RequestParam
+			String issuedTo, @RequestParam
+			String description, @RequestParam
+			String tokenType)
 			throws InvalidSecurityTokenException {
 
 		if (!password.equals(apiDevPassword)) {
 			throw new InvalidSecurityTokenException("incorrect dev password");
+		}
+
+		TokenType t = null;
+		if (tokenType.equals("development")) {
+			t = TokenType.DEVELOPMENT;
+		} else if (tokenType.equals("production")) {
+			t = TokenType.PRODUCTION;
+		} else {
+			//TODO throw invalid argument exception
 		}
 
 		// @formatter:off
@@ -62,8 +73,8 @@ public class TestApi {
 				.issuedBy(issuedBy)
 				.issuedTo(issuedTo)
 				.description(description)
-				.tokenType(tokenType) //TODO not null-safe
-				.token(JwtTokenEncoder.createJWT(issuedTo + "-api-token", issuedBy, tokenType.name(), 0)) //TODO reference to t is not null-safe
+				.tokenType(t) //TODO not null-safe
+				.token(JwtTokenEncoder.createJWT(issuedTo + "-api-token", issuedBy, t.name(), 0)) //TODO reference to t is not null-safe
 				.build();
 		// @formatter:on
 		token = securityTokenController.save(token);
