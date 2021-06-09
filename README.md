@@ -11,7 +11,7 @@ A bot for managing hosting instances.
 ##
 # /generate_test_token GET
   # Required parameters:
-   - password | String | The development or production password to generate a key
+   - password | String | The development or production password to generate a key.
                          Default dev password: password123
    - issuedBy | String | Arbituary string containing the issuer
    - issuedTo | String | Arbituary string containing the issuee
