@@ -1,5 +1,7 @@
 package uk.co.corasoftware.controller.web;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -17,12 +19,12 @@ import uk.co.corasoftware.model.security.ApiToken;
 import uk.co.corasoftware.repo.ServiceProductRepo;
 import uk.co.corasoftware.util.security.jwt.JwtTokenEncoder;
 
-@RestController
 //@Profile("dev")
+@RestController
 public class TestApi {
 
 	@Autowired
-	private ServiceProductRepo serviceProductRepo;
+	private ServiceProductRepo serviceProductRepo; //TODO controller
 
 	@Autowired
 	private SecurityTokenController securityTokenController;
@@ -56,14 +58,19 @@ public class TestApi {
 			throw new InvalidSecurityTokenException("incorrect dev password");
 		}
 
+		Optional<ApiToken> tokenOpt = securityTokenController.findByIssuedTo(issuedTo); //TODO generate userIds
+		if (tokenOpt.isPresent()) {
+			return new ResponseEntity<>(tokenOpt.get(), HttpStatus.OK);
+		}
+
 		// @formatter:off
 		ApiToken token = ApiToken.builder()
-				.name(issuedTo + "-api-token")
+				.name(issuedTo)
 				.issuedBy(issuedBy)
 				.issuedTo(issuedTo)
 				.description(description)
 				.tokenType(tokenType) //TODO not null-safe
-				.token(JwtTokenEncoder.createJWT(issuedTo + "-api-token", issuedBy, tokenType.name(), 0)) //TODO reference to t is not null-safe
+				.token(JwtTokenEncoder.createJWT(issuedTo, issuedBy, tokenType.name(), 0)) //TODO reference to t is not null-safe
 				.build();
 		// @formatter:on
 		token = securityTokenController.save(token);

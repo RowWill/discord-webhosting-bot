@@ -20,36 +20,32 @@ public class JwtTokenEncoder {
 	private JwtTokenEncoder() {
 	}
 
-	/*
-	 * TODO fix constraint issues
-	 */
-
 	public static String createJWT(String id, String issuer, String subject, long ttlMillis) {
 		SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
 		long nowMillis = System.currentTimeMillis();
 		Date now = new Date(nowMillis);
 
-		byte[] apiKeySecretBytes = DatatypeConverter
-				.parseBase64Binary(String.valueOf(nowMillis));
-		Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
+		final byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(String.valueOf(nowMillis));
+		final Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
 
 		// @formatter:off
 		JwtBuilder builder = Jwts.builder()
-								.setId(id)
-								.setIssuedAt(now)
-								.setSubject(subject)
-								.setIssuer(issuer)
-				.signWith(signatureAlgorithm, signingKey);
+						.setId(id)
+						.setIssuedAt(now)
+						.setSubject(subject)
+						.setIssuer(issuer)
+						.signWith(signatureAlgorithm, signingKey);
 		// @formatter:on
+
 		if (ttlMillis > 0) {
 			long expMillis = nowMillis + ttlMillis;
 			Date exp = new Date(expMillis);
 			builder.setExpiration(exp);
 		}
 
-		String compact = builder.compact();
-		LOG.debug("Dev token - {}", compact);
+		String compact = builder.compact(); //TODO update to debug
+		LOG.info("Dev token - {}", compact);
 		return compact;
 	}
 }

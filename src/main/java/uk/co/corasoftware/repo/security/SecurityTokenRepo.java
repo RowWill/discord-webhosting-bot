@@ -11,4 +11,6 @@ import uk.co.corasoftware.model.security.ApiToken;
 public interface SecurityTokenRepo extends JpaRepository<ApiToken, String> {
 
 	public Optional<ApiToken> findByToken(String token);
+
+	public Optional<ApiToken> findByIssuedTo(String name);
 }

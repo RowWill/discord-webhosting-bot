@@ -14,6 +14,10 @@ public class SecurityTokenServiceImpl implements Service<ApiToken> {
 	@Autowired
 	private SecurityTokenRepo repo;
 
+	public Optional<ApiToken> findByIssuedTo(String name) {
+		return repo.findByIssuedTo(name);
+	}
+
 	@Override
 	public ApiToken save(ApiToken entity) {
 		return repo.save(entity);
