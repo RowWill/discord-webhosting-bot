@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,17 +34,17 @@ public class TestApi {
 	@Value("#{environment.BOT_PROD_PASSWORD}")
 	private String apiProdPassword;
 
-	@GetMapping(path = "/alive")
+	@GetMapping("/alive")
 	public ResponseEntity<String> alive() {
 		return new ResponseEntity<>("alive", HttpStatus.OK);
 	}
 
-	@GetMapping(path = { "api/test-api" })
+	@GetMapping("api/test-api")
 	public ResponseEntity<ServiceProduct> testApi(@RequestParam String token) {
 		return new ResponseEntity<>(serviceProductRepo.findAll().get(0), HttpStatus.OK);
 	}
 
-	@RequestMapping({ "/generate_test_token" })
+	@GetMapping("/generate_test_token")
 	public ResponseEntity<ApiToken> generateDevToken(
 			@RequestParam String password,
 			@RequestParam String issuedBy,
