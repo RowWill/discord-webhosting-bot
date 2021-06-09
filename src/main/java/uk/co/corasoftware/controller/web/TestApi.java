@@ -74,6 +74,6 @@ public class TestApi {
 				.build();
 		// @formatter:on
 		token = securityTokenController.save(token);
-		return new ResponseEntity<>(token, HttpStatus.OK);
+		return new ResponseEntity<>(token, HttpStatus.CREATED);
 	}
 }
