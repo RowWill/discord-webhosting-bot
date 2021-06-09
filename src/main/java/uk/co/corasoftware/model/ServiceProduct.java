@@ -14,14 +14,12 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.co.corasoftware.enums.ApiType;
 import uk.co.corasoftware.enums.InstanceType;
 import uk.co.corasoftware.model.server.Environment;
 import uk.co.corasoftware.model.server.Node;
 
-@Data
 @Entity
 @Builder
 @NoArgsConstructor

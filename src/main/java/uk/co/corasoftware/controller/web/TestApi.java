@@ -5,13 +5,17 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import uk.co.corasoftware.controller.security.SecurityTokenController;
+import uk.co.corasoftware.enums.TokenType;
+import uk.co.corasoftware.exception.InvalidSecurityTokenException;
 import uk.co.corasoftware.model.ServiceProduct;
+import uk.co.corasoftware.model.security.ApiToken;
 import uk.co.corasoftware.repo.ServiceProductRepo;
-import uk.co.corasoftware.repo.server.EnvironmentRepo;
-import uk.co.corasoftware.repo.server.NodeRepo;
+import uk.co.corasoftware.util.security.jwt.JwtTokenEncoder;
 
 @RestController
 //@Profile("dev")
@@ -21,12 +25,9 @@ public class TestApi {
 	private ServiceProductRepo serviceProductRepo;
 
 	@Autowired
-	private EnvironmentRepo environmentRepo;
+	private SecurityTokenController securityTokenController;
 
-	@Autowired
-	private NodeRepo nodeRepo;
-
-	@Value("#{environment.BOT_DEV_PASSWORD}")
+	@Value("#{environment.BOT_DEV_PASSWORD ?: 'password123'}")
 	private String apiDevPassword;
 
 	@Value("#{environment.BOT_PROD_PASSWORD}")
@@ -41,5 +42,42 @@ public class TestApi {
 	public ResponseEntity<ServiceProduct> testApi(@RequestParam
 	String token) {
 		return new ResponseEntity<>(serviceProductRepo.findAll().get(0), HttpStatus.OK);
+	}
+
+	@RequestMapping({ "/generate_test_token" })
+	public ResponseEntity<ApiToken> generateDevToken(@RequestParam
+	String password, @RequestParam
+	String issuedBy,
+			@RequestParam
+			String issuedTo, @RequestParam
+			String description, @RequestParam
+			String tokenType)
+			throws InvalidSecurityTokenException {
+
+		if (!password.equals(apiDevPassword)) {
+			throw new InvalidSecurityTokenException("incorrect dev password");
+		}
+
+		TokenType t = null;
+		if (tokenType.equals("development")) {
+			t = TokenType.DEVELOPMENT;
+		} else if (tokenType.equals("production")) {
+			t = TokenType.PRODUCTION;
+		} else {
+			//TODO throw invalid argument exception
+		}
+
+		// @formatter:off
+		ApiToken token = ApiToken.builder()
+				.name(issuedTo + "-api-token")
+				.issuedBy(issuedBy)
+				.issuedTo(issuedTo)
+				.description(description)
+				.tokenType(t) //TODO not null-safe
+				.token(JwtTokenEncoder.createJWT(issuedTo + "-api-token", issuedBy, t.name(), 0)) //TODO reference to t is not null-safe
+				.build();
+		// @formatter:on
+		token = securityTokenController.save(token);
+		return new ResponseEntity<>(token, HttpStatus.OK);
 	}
 }

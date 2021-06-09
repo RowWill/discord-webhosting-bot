@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import uk.co.corasoftware.controller.service.security.SecurityTokenController;
+import uk.co.corasoftware.controller.security.SecurityTokenController;
 
 public class RequestInterceptor extends HandlerInterceptorAdapter {
 

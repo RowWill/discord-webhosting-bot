@@ -6,14 +6,21 @@ import java.util.Date;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 public class JwtTokenEncoder {
 
-	public static String createJWT(String id, String issuer, String subject, long ttlMillis) {
+	private static final Logger LOG = LoggerFactory.getLogger(JwtTokenEncoder.class);
 
+	private JwtTokenEncoder() {
+	}
+
+	public static String createJWT(String id, String issuer, String subject, long ttlMillis) {
 		SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
 		long nowMillis = System.currentTimeMillis();
@@ -36,6 +43,8 @@ public class JwtTokenEncoder {
 			builder.setExpiration(exp);
 		}
 
-		return builder.compact();
+		String compact = builder.compact();
+		LOG.debug("Dev token - {}", compact);
+		return compact;
 	}
 }

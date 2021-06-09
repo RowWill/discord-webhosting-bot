@@ -9,7 +9,7 @@ import uk.co.corasoftware.model.Action;
 import uk.co.corasoftware.repo.ActionRepo;
 
 @Service
-public class ActionService {
+public class ActionServiceImpl {
 
 	@Autowired
 	private ActionRepo repo;

@@ -11,7 +11,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
-import uk.co.corasoftware.controller.service.security.SecurityTokenController;
+import uk.co.corasoftware.controller.security.SecurityTokenController;
 import uk.co.corasoftware.enums.ApiType;
 import uk.co.corasoftware.enums.InstanceType;
 import uk.co.corasoftware.enums.NodeType;

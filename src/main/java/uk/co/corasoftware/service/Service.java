@@ -3,7 +3,7 @@ package uk.co.corasoftware.service;
 import java.util.List;
 import java.util.Optional;
 
-public interface IService<T> {
+public interface Service<T> {
 	public T save(T entity);
 
 	public void deleteAll();
