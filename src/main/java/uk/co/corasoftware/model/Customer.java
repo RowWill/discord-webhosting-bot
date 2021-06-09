@@ -13,9 +13,11 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor

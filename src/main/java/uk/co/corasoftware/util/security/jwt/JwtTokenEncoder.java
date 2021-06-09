@@ -20,13 +20,18 @@ public class JwtTokenEncoder {
 	private JwtTokenEncoder() {
 	}
 
+	/*
+	 * TODO fix constraint issues
+	 */
+
 	public static String createJWT(String id, String issuer, String subject, long ttlMillis) {
 		SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
 		long nowMillis = System.currentTimeMillis();
 		Date now = new Date(nowMillis);
 
-		byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary("TEST_KEY");
+		byte[] apiKeySecretBytes = DatatypeConverter
+				.parseBase64Binary(String.valueOf(nowMillis));
 		Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
 
 		// @formatter:off
